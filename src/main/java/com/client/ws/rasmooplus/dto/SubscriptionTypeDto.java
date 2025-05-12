@@ -1,37 +1,20 @@
-package com.client.ws.rasmooplus.model;
+package com.client.ws.rasmooplus.dto;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "subscriptions_type")
-public class SubcriptionType implements Serializable {
+public class SubscriptionTypeDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subscriptions_type_id")
     private Long id;
     private String name;
-    @Column(name = "access_months")
     private Long accessMonths;
     private BigDecimal price;
-    @Column(name = "product_key", unique = true)
     private String productKey;
 
-
-    public SubcriptionType() {
-    }
-
-    public SubcriptionType(Long id, String name, Long accessMonth, BigDecimal price, String productKey) {
-        this.id = id;
-        this.name = name;
-        this.accessMonths = accessMonth;
-        this.price = price;
-        this.productKey = productKey;
-    }
 
     public Long getId() {
         return id;
