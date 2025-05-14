@@ -3,6 +3,7 @@ package com.client.ws.rasmooplus.service.impl;
 import com.client.ws.rasmooplus.dto.SubscriptionTypeDto;
 import com.client.ws.rasmooplus.exception.BadRequestException;
 import com.client.ws.rasmooplus.exception.NotFoundException;
+import com.client.ws.rasmooplus.mapper.SubscriptionTypeMapper;
 import com.client.ws.rasmooplus.model.SubcriptionType;
 import com.client.ws.rasmooplus.repository.SubscriptionTypeRepository;
 import com.client.ws.rasmooplus.service.SubscriptionTypeService;
@@ -34,24 +35,14 @@ public class SubscriptionTypeServiceImpl implements SubscriptionTypeService {
         if (Objects.nonNull(dto.getId())){
             throw new BadRequestException("ID deve ser nulo!");
         }
-        SubcriptionType subcriptionType =  new SubcriptionType();
-        subcriptionType.setId(dto.getId());
-        subcriptionType.setName(dto.getName());
-        subcriptionType.setPrice(dto.getPrice());
-        subcriptionType.setAccessMonths(dto.getAccessMonths());
-        subcriptionType.setProductKey(dto.getProductKey());
-        return subscriptionTypeRepository.save(subcriptionType);
+        return subscriptionTypeRepository.save(SubscriptionTypeMapper.fromDtoToEntity(dto));
     }
 
     @Override
     public SubcriptionType update(Long id, SubscriptionTypeDto dto) {
         SubcriptionType subcriptionType = getSubcriptionType(id);
-        subcriptionType.setId(id);
-        subcriptionType.setName(dto.getName());
-        subcriptionType.setPrice(dto.getPrice());
-        subcriptionType.setAccessMonths(dto.getAccessMonths());
-        subcriptionType.setProductKey(dto.getProductKey());
-        return subscriptionTypeRepository.save(subcriptionType);
+        subcriptionType.setId(dto.getId());
+        return subscriptionTypeRepository.save(SubscriptionTypeMapper.fromDtoToEntity(dto));
 
     }
 

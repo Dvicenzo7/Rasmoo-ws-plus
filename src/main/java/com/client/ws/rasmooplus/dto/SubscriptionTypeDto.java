@@ -4,15 +4,28 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
 public class SubscriptionTypeDto {
 
     private Long id;
+    @NotBlank(message = "campo não pode ser nulo ou vazio")
+    @Size(min = 5, max = 30, message = "campo nome precisa ter entre 5 e 30")
     private String name;
+
+    @Max(value = 12, message = "Não pode ser maior que 12")
     private Long accessMonths;
+
+    @NotBlank(message = "Campo price não pode ser nulo")
     private BigDecimal price;
+
+    @NotBlank(message = "Campo productKey não pode ser vazio ou nulo")
+    @Size(min = 5, max = 15, message = "campo productKey precisa ter entre 5 e 30")
     private String productKey;
 
 
