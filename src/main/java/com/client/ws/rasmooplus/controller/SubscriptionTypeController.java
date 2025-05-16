@@ -21,7 +21,7 @@ import java.util.Objects;
 public class SubscriptionTypeController {
     
     @Autowired
-    SubscriptionTypeService subscriptionTypeService;
+    private SubscriptionTypeService subscriptionTypeService;
 
     @GetMapping
     public ResponseEntity<List<SubcriptionType>> findAll(){
@@ -39,7 +39,7 @@ public class SubscriptionTypeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SubcriptionType>findById(@PathVariable("id") Long id, @RequestBody SubscriptionTypeDto subscriptionTypeDto){
+    public ResponseEntity<SubcriptionType>update(@PathVariable("id") Long id, @RequestBody SubscriptionTypeDto subscriptionTypeDto){
         return ResponseEntity.status(HttpStatus.OK).body(subscriptionTypeService.update(id, subscriptionTypeDto));
     }
 

@@ -2,13 +2,14 @@ package com.client.ws.rasmooplus.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "subscriptions_type")
-public class SubcriptionType implements Serializable {
+public class SubcriptionType extends RepresentationModel<SubcriptionType> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
