@@ -1,6 +1,7 @@
 package com.client.ws.rasmooplus.dto;
 
 import com.client.ws.rasmooplus.model.SubcriptionType;
+import com.client.ws.rasmooplus.model.User;
 import com.client.ws.rasmooplus.model.UserType;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
@@ -37,6 +38,18 @@ public class UserDto {
     private Long userType;
 
     private Long subcriptionType;
+
+    public UserDto(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.phone = user.getPhone();
+        this.cpf = user.getCpf();
+        this.dtSubscription = user.getDtSubscription();
+        this.dtExpiration = user.getDtExpiration();
+        this.userType = user.getUserType() != null ? user.getUserType().getId() : null;
+        this.subcriptionType = user.getSubcriptionType() != null ? user.getSubcriptionType().getId() : null;
+    }
 
     public Long getId() {
         return id;

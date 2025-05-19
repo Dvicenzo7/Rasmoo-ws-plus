@@ -10,9 +10,11 @@ import com.client.ws.rasmooplus.repository.SubscriptionTypeRepository;
 import com.client.ws.rasmooplus.repository.UserRepository;
 import com.client.ws.rasmooplus.repository.UserTypeRepository;
 import com.client.ws.rasmooplus.service.UserService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -39,4 +41,17 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(user);
     }
+
+
+    @Override
+    public List<User> findAll() {
+        List<User> users = userRepository.findAll();
+        users.forEach(user -> {
+            if (user.getUserType() != null) {
+                Hibernate.initialize(user.getUserType());
+            }
+        });
+        return users;
+    }
+
 }
