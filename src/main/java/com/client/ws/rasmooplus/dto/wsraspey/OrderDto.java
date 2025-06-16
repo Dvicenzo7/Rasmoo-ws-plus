@@ -1,16 +1,18 @@
 package com.client.ws.rasmooplus.dto.wsraspey;
 
+import java.math.BigDecimal;
+
 public class OrderDto {
 
     private String id;
     private String customerId;
-    private Long discount;
+    private BigDecimal discount;
     private String productAcronym;
 
     public OrderDto() {
     }
 
-    public OrderDto(String id, String customerId, Long discount, String productAcronym) {
+    public OrderDto(String id, String customerId, BigDecimal discount, String productAcronym) {
         this.id = id;
         this.customerId = customerId;
         this.discount = discount;
@@ -33,11 +35,11 @@ public class OrderDto {
         this.customerId = customerId;
     }
 
-    public Long getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Long discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 
